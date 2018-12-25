@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Input search criterias</h1>
+       <form id="form" class="form">
+           <label id="label" style="display:none">All fields must be provided</label>
+           <input type="date" class="date input" required>
+           <select id="housing" class="housing input">
+               <option selected disabled value="0">Choose housing</option>
+           </select>
+           <select id="seats" class="seats input">
+               <option selected disabled value="0">Choose seats</option>
+           </select>
+           <select id="lessons" class="lessons input">
+               <option selected disabled value="0">Choose lesson</option>
+           </select>
+           <div id="checkbox" class="checkbox-block">
+               <input class="checkbox" type="checkbox">
+               <label>Multimedia</label>
+           </div>
+            <a class="sign" id="submit">search</a>
+       </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--<script src="{{ url_for('static', filename='scripts/datepicker.min.js') }}"></script>-->
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</body>
+</html>

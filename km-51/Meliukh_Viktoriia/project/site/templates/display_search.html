@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="display">
+            {% for item in res[0] %}
+                <div class="item">
+                    <div class="info">
+                        <div class="row">
+                            <span class="span">
+                                {{ item['classroomnum'] }} classroom,
+                            </span>
+                            <span class="span">
+                                {{ item['housingnumber'] }} housing,
+                            </span>
+                            <span class="span">
+                                {{ item['numberofseats'] }} seats
+                            </span>
+                        </div>
+                        <div class="row">
+                            <span class="span">{{res[1]['lsn']}}</span>
+                            {% if res[1]['mult'] == '1' %}
+                            <span class="span">Multimedia</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a
+                            data-classroomnum="{{ item['classroomnum'] }}"
+                            data-id="{{ item['classroom_id'] }}"
+                            data-housingnumber="{{ item['housingnumber'] }}"
+                            data-numberofseats="{{ item['numberofseats'] }}"
+                            data-lsn="{{res[1]['lsn']}}"
+                            data-date="{{res[1]['date']}}"
+                            data-multimedia="{{res[1]['mult']}}"
+                           id="select" class="select-btn sign"
+                        >select</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</body>
+</html>

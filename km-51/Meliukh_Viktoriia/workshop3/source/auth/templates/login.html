@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:margin-left="http://www.w3.org/1999/xhtml" xmlns:font-weight="http://www.w3.org/1999/xhtml">
+   <body>
+
+      <h2 style = "text-align: center;">Login Form</h2>
+      <form action = "http://localhost:5000/login" method = post>
+         <fieldset>
+            <legend>Login Form</legend>
+
+
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+
+                <div>
+                    {{ form.email.label }}      {{ form.email }}
+                    <br>
+
+                      {% for message in form.password.errors %}
+                         <div>{{ message }}</div>
+                      {% endfor %}
+                    <br>
+                </div>
+
+
+                <div>
+                   {{ form.password.label }}     {{ form.password }}
+                   <br>
+                          {% for message in form.email.errors %}
+                             <div>{{ message }}</div>
+                            {% endfor %}
+                </div>
+
+               {{ form.submit }}
+            </div>
+
+         </fieldset>
+      </form>
+
+   </body>
+</html>

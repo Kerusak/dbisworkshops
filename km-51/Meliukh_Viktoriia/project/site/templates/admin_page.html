@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN PAGE</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="log">
+        <a class="link" href="/logout">log out</a>
+    </div>
+    <div class="wrapper check">
+
+        <h1>HELLO ADMIN</h1>
+        <div class="display">
+            {% for item in res %}
+                <div class="item">
+                    <div class="info">
+                        <div class="row">
+                            <span class="span">
+                                {{ item['fname'] }}
+                            </span>
+                            <span class="span">
+                                {{ item['mname'] }}
+                            </span>
+                            <span class="span">
+                                {{ item['lname'] }}
+                            </span>
+                        </div>
+                        <div class="row">
+                            <span class="span">
+                                {{ item['email'] }}
+                            </span>
+                        </div>
+                    </div>
+                    {% if item['emailischecked'] == 0 %}
+                    <div class="buttons">
+                        <a
+                            data-id="{{ item['user_id'] }}"
+                            class="checkUser sign"
+                        >check</a>
+                    </div>
+                    {% endif %}
+
+                    <div class="buttons">
+                        <a
+                            data-id="{{ item['user_id'] }}" class="deleteUser sign"
+                        >delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</body>
+</html>

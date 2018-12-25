@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit bookings</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="wrapper personal">
+        <h1>Your list of bookings</h1>
+        <div class="display">
+            {% for item in res %}
+                <div class="item">
+                    <div class="info">
+                        <div class="row">
+                            <span class="span">
+                                {{ item['CLASSROOMNUM'] }} classroom,
+                            </span>
+                            <span class="span">
+                                {{ item['HOUSINGNUMBER'] }} housing,
+                            </span>
+                            <span class="span">
+                                {{ item['NUMBEROFSEATS'] }} seats
+                            </span>
+                        </div>
+                        <div class="row">
+                            <span class="span">{{item['BTIME']}} - {{item['ETIME']}} ({{item['LESSONNUMBER']}} lesson)</span>
+                            {% if item['MULTIMEDIA'] == '1' %}
+                            <span class="span">Multimedia</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a
+                            data-id="{{ item['CLASSROOM_ID'] }}" class="delete sign"
+                        >delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="link" href="/">Home page</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</body>
+</html>

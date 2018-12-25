@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Register form</h2>
+        {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+        <form class="form" action="/register" method="POST">
+        <div class="element">
+                 {{ form.fname(class='input', placeholder='first name') }}
+                        <br>
+
+                          {% for message in form.fname.errors %}
+                             <div>{{ message }}</div>
+                          {% endfor %}
+                        <br>
+        </div>
+        <div class="element">
+                    {{ form.mname(class='input', placeholder='middle name') }}
+                            <br>
+
+                              {% for message in form.mname.errors %}
+                                 <div>{{ message }}</div>
+                              {% endfor %}
+                            <br>
+        </div>
+        <div class="element">
+              {{ form.lname(class='input', placeholder='last name') }}
+                        <br>
+
+                          {% for message in form.lname.errors %}
+                             <div>{{ message }}</div>
+                          {% endfor %}
+                        <br>
+        </div>
+        <div class="element">
+              {{ form.email(class='input', placeholder='email') }}
+                        <br>
+
+                          {% for message in form.email.errors %}
+                             <div>{{ message }}</div>
+                          {% endfor %}
+                        <br>
+        </div>
+        <div class="element">
+                  {{ form.password(class='input', placeholder='password') }}
+                        <br>
+
+                          {% for message in form.password.errors %}
+                             <div>{{ message }}</div>
+                          {% endfor %}
+                        <br>
+        </div>
+        <div class="element">
+                {{ form.repeat(class='input', placeholder='repeat password') }}
+                        <br>
+
+                          {% for message in form.repeat.errors %}
+                             <div>{{ message }}</div>
+                          {% endfor %}
+                        <br>
+        </div>
+    {{ form.submit(style='margin: 0 auto', class='sign') }}
+        </form>
+    </div>
+</body>
+</html>

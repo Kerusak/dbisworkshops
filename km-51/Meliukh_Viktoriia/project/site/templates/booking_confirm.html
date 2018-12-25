@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="wrapper confirm">
+        <h1>Select a classroom</h1>
+        <div class="display">
+            <div class="item">
+                <div class="info">
+                    <div class="row">
+                        <span class="span">
+                            {{ res[1]['c_num'] }} classroom,
+                        </span>
+                        <span class="span">
+                            {{ res[1]['h_num'] }} housing,
+                        </span>
+                        <span class="span">
+                            {{ res[1]['seats'] }} seats
+                        </span>
+                    </div>
+                    <div class="row">
+                        <span class="span">{{res[1]['lsn']}}</span>
+                        {% if res[1]['mult'] == '1' %}
+                        <span class="span">Multimedia</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="user">
+                <span>{{res[0][3]}} </span>
+                <span>{{res[0][1]}} </span>
+                <span>{{res[0][2]}}</span>
+            </div>
+        </div>
+        <a data-c_id="{{res[1]['c_id']}}"
+           data-lsn="{{res[1]['lsn']}}"
+           data-bdate="{{res[1]['date']}}"
+                class="sign" href="/confirmsuccess" id="confirm">Confirm</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</body>
+</html>
